@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="register-wrapper">
+
+    <!-- 🔙 Back -->
+    <p class="back" onclick="goLogin()">← Login</p>
+
+    <!-- 🔲 Card -->
+    <div class="register-card">
+
+        <h2>🎬 Create Account</h2>
+        <p class="subtitle">Join and start streaming</p>
+
+        <form id="regForm">
+
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <p class="login-text">
+            Already have an account?
+            <span onclick="goLogin()">Login</span>
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

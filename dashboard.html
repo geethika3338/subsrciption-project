@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>🎬 User Dashboard</h2>
+
+<p id="welcome"></p>
+<p id="plan"></p>
+
+<!-- 🔥 MOVIE SECTION (UPDATED UI) -->
+<h3>🔥 Trending Movies</h3>
+<div id="movies" class="movie-grid"></div>
+
+<br>
+
+<button onclick="upgrade()">Upgrade Plan</button>
+
+<br><br>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+
+// 👤 Get user email
+let userName = localStorage.getItem("userName");
+let selectedPlan = localStorage.getItem("selectedPlan");
+
+// 🔒 Protect page
+if(!userName){
+    alert("Please login first");
+    window.location.href="login.html";
+}
+
+// 👋 Welcome
+document.getElementById("welcome").innerHTML =
+"Welcome, " + userName + " 👋";
+
+
+// ✅ 🔥 ADD THIS BLOCK HERE
+if(userName){
+
+fetch("http://localhost:3000/get-plan/" + userName)
+.then(res => res.json())
+.then(data => {
+
+    if(data.plan){
+        localStorage.setItem("selectedPlan", data.plan);
+
+        document.getElementById("plan").innerHTML =
+        "Your Plan: " + data.plan;
+    } else {
+        document.getElementById("plan").innerHTML =
+        "No plan selected!";
+    }
+
+});
+}
+
+
+// 🎬 Fetch movies (AFTER plan is set)
+if(selectedPlan){
+    fetch("http://localhost:3000/movies/" + selectedPlan)
+    .then(res => res.json())
+    .then(data => {
+
+        let output = "";
+
+        data.forEach(movie => {
+            output += `
+            <div class="movie-card">
+                <img src="${movie.image}" />
+                <p>${movie.movie_name}</p>
+            </div>
+            `;
+        });
+
+        document.getElementById("movies").innerHTML = output;
+
+    })
+    .catch(err => {
+        console.log(err);
+        document.getElementById("movies").innerHTML =
+        "Error loading movies";
+    });
+}
+
+</script>
+<script src="script.js"></script>
+</body>
+
+</html>

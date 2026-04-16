@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="register-wrapper">
+
+    <!-- 🔙 Back -->
+    <p class="back" onclick="goRegister()">← Register</p>
+
+    <!-- 🔲 Card -->
+    <div class="register-card">
+
+        <h2>🎬 Welcome Back</h2>
+        <p class="subtitle">Login to continue</p>
+
+        <form id="loginForm">
+
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p class="login-text">
+            Don't have an account?
+            <span onclick="goRegister()">Register</span>
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

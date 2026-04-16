@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Subscription Plans</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>Choose Your Plan</h2>
+
+<div class="plan">
+<h3>Basic Plan</h3>
+<p>₹199 / month</p>
+<p>✔ Limited Movies (SD)</p>
+<button onclick="selectPlan('Basic')">Select</button>
+</div>
+
+<div class="plan">
+<h3>Pro Plan</h3>
+<p>₹399 / month</p>
+<p>✔ More Movies (HD)</p>
+<button onclick="selectPlan('Pro')">Select</button>
+</div>
+
+<div class="plan">
+<h3>Premium Plan</h3>
+<p>₹699 / month</p>
+<p>✔ All Movies (Full HD/4K)</p>
+<button onclick="selectPlan('Premium')">Select</button>
+</div>
+
+<br>
+
+<button onclick="goHome()">Back</button>
+
+<script>
+
+function selectPlan(plan){
+localStorage.setItem("selectedPlan", plan);
+alert(plan + " Plan Activated!");
+window.location.href="dashboard.html";
+}
+
+function goHome(){
+window.location.href="index.html";
+}
+
+</script>
+
+</body>
+</html>
